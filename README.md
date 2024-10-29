@@ -55,6 +55,10 @@ Remember to click "Submit" to save your configuration!
 
 While technically not in the scope of this plugin, this section describes how to set up an InfluxDB data source in Grafana. (Another option would be to use the experimental [signalk-grafana data](https://github.com/tkurki/signalk-grafana) data source.)
 
+These instuctions configure an InfluxDb datasource using InfluxQL as the query language against InfluxDb version 2. InfluxQL is a good choice as the query language because the Grafana datasource includes a UI for building queries by picking database fields instead of manually writing the raw query.
+
+To begin with you will need to [create an API token in InfluxDB](https://docs.influxdata.com/influxdb/v2/admin/tokens/create-token/).
+
 Login to Grafana. On Signal K installations, Grafana often runs on port 3001: http://mysignalkhostname:3001/
 
 Create the data source:
@@ -68,7 +72,9 @@ Create the data source:
 To authenticate, you need to add a custom HTTP header:
 
 - Header: Authorization
-- Value: Token (token you created when configuring InfluxDB)
+- Value: `Token token-value-here`
+
+The token needs to start with the prefix `Token ` after which you enter the actual token value. There must be a space between the word `Token` and the token value.
 
 Use the following settings:
 
